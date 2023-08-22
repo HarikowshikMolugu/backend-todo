@@ -27,6 +27,18 @@ const authenticationRoutes = require('./routes/authenticationRoutes');
 app.use(userRoutes);
 app.use(authenticationRoutes);
 
+const User = require('./models/user')
+const UserTodo = require('./models/userTodo')
+
+//create tables
+User.sync().then(() => {
+  console.log("User Model synced");
+});
+
+UserTodo.sync().then(() => {
+  console.log("UserTodo Model synced");
+});
+
 // Use PORT provided in environment or default to 3000
 const port = process.env.PORT || 3000;
 
