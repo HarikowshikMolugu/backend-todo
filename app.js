@@ -27,7 +27,15 @@ const authenticationRoutes = require('./routes/authenticationRoutes');
 app.use(userRoutes);
 app.use(authenticationRoutes);
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+// Use PORT provided in environment or default to 3000
+const port = process.env.PORT || 3000;
+
+// Listen on `port` and 0.0.0.0
+app.listen(port, "0.0.0.0", function () {
+    console.log('Server is running on port 3000');
 });
+
+// Start the server
+// app.listen(3000, () => {
+//   console.log('Server is running on port 3000');
+// });
